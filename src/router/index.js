@@ -11,11 +11,30 @@ const routes = [
     component: Home
   },
   {
+    path: '/token',
+    name: 'Token', // token列表
+    component: () => import('../views/Token.vue')
+  },
+  {
+    path: '/token-manage',
+    name: 'TokenManage', // token列表
+    component: () => import('../views/Manage.vue'),
+    children: [
+      {
+        path: ':ticker/aa',
+        name: 'AA',
+        component: () => import('../views/AA.vue')
+      },
+      {
+        path: ':ticker/bb',
+        name: 'BB',
+        component: () => import('../views/BB.vue')
+      }
+    ]
+  },
+  {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
